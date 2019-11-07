@@ -19,8 +19,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         folderNameList = []
+        folder_tableview.isEditing = false
         // Do any additional setup after loading the view.
-        Edit_btn.rightBarButtonItem = editButtonItem
+        
+        
+        
+        
         
     }
 
@@ -49,10 +53,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.present(makeFolderAlert, animated: true, completion: nil)
         
         
+    
+    }
+    
+    
+    @IBAction func Edit_btn_press(_ sender: UIBarButtonItem) {
+        
+        if sender.title == "Edit" {
+            
+            sender.title = "Done"
+            folder_tableview.isEditing = true
+            
+            
+        }
+        else{
+            sender.title = "Edit"
+            folder_tableview.isEditing = false
+        }
         
         
         
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return folderNameList?.count ?? 0
@@ -69,5 +91,56 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    // editing function
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+        let temp = folderNameList![sourceIndexPath.row]
+        folderNameList![sourceIndexPath.row] = folderNameList![destinationIndexPath.row]
+        folderNameList![destinationIndexPath.row] = temp
+        folder_tableview.reloadData()
+        
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+   
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+    /*
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        
+        
+         if editingStyle == .delete {
+        
+            folderNameList?.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        
+        }
+    }*/
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let del = UIContextualAction(style: .destructive, title: "Delete") { (act, V, _) in
+            
+            self.folderNameList?.remove(at: indexPath.row)
+            self.folder_tableview.reloadData()
+            
+            
+        }
+        return UISwipeActionsConfiguration(actions: [del])
+    }
+
 }
 
