@@ -13,6 +13,7 @@
 		9B3EEBB62374A49F00C31AFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B3EEBB42374A49F00C31AFF /* Main.storyboard */; };
 		9B3EEBB82374A49F00C31AFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B3EEBB72374A49F00C31AFF /* Assets.xcassets */; };
 		9B3EEBBB2374A49F00C31AFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B3EEBB92374A49F00C31AFF /* LaunchScreen.storyboard */; };
+		9B3EEBC72374AADA00C31AFF /* folder-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B3EEBC62374AADA00C31AFF /* folder-icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		9B3EEBB72374A49F00C31AFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B3EEBBA2374A49F00C31AFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B3EEBBC2374A49F00C31AFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B3EEBC62374AADA00C31AFF /* folder-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "folder-icon.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		9B3EEBAD2374A49F00C31AFF /* Parth_C0766346_Note_p1 */ = {
 			isa = PBXGroup;
 			children = (
+				9B3EEBC52374AA9B00C31AFF /* Images */,
 				9B3EEBAE2374A49F00C31AFF /* AppDelegate.swift */,
 				9B3EEBB02374A49F00C31AFF /* SceneDelegate.swift */,
 				9B3EEBB22374A49F00C31AFF /* ViewController.swift */,
@@ -65,6 +68,14 @@
 				9B3EEBBC2374A49F00C31AFF /* Info.plist */,
 			);
 			path = Parth_C0766346_Note_p1;
+			sourceTree = "<group>";
+		};
+		9B3EEBC52374AA9B00C31AFF /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				9B3EEBC62374AADA00C31AFF /* folder-icon.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B3EEBC72374AADA00C31AFF /* folder-icon.png in Resources */,
 				9B3EEBBB2374A49F00C31AFF /* LaunchScreen.storyboard in Resources */,
 				9B3EEBB82374A49F00C31AFF /* Assets.xcassets in Resources */,
 				9B3EEBB62374A49F00C31AFF /* Main.storyboard in Resources */,
