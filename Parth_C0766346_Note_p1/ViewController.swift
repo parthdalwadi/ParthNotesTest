@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
-    @IBOutlet weak var fLable: UILabel!
+   
     @IBOutlet weak var nav: UINavigationItem!
     @IBOutlet weak var folder_tableview: UITableView!
     var folderNameList : [String]?
@@ -20,7 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         folderNameList = []
         folder_tableview.isEditing = false
-        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         // Do any additional setup after loading the view.
         
         
@@ -132,20 +132,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return UISwipeActionsConfiguration(actions: [del])
     }
   
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-
-        nav.title  = "Folders"
-        fLable.isHidden = true
-        }
-
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-
-        nav.title = ""
-        fLable.isHidden = false
-        
-        
-    }
-
     
     
 }

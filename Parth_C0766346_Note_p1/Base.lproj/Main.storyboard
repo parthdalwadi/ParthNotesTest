@@ -27,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="-861" y="47"/>
         </scene>
-        <!--View Controller-->
+        <!--Folders-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Parth_C0766346_Note_p1" customModuleProvider="target" sceneMemberID="viewController">
@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4pK-SR-XbX">
-                                <rect key="frame" x="0.0" y="104" width="375" height="514"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
@@ -44,13 +44,6 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="DZ5-L1-aU6"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Folders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkV-yJ-BSb">
-                                <rect key="frame" x="16" y="59" width="76" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -64,7 +57,7 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="never" id="aMl-Vg-crd">
+                    <navigationItem key="navigationItem" title="Folders" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="aMl-Vg-crd">
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="4Uu-GB-tUp">
                             <connections>
                                 <action selector="Edit_btn_press:" destination="BYZ-38-t0r" id="Ws8-vO-3pd"/>
@@ -74,14 +67,13 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="Edit_btn" destination="aMl-Vg-crd" id="E1J-8w-v01"/>
-                        <outlet property="fLable" destination="JkV-yJ-BSb" id="GNK-uj-BzN"/>
                         <outlet property="folder_tableview" destination="4pK-SR-XbX" id="ErL-BD-crT"/>
                         <outlet property="nav" destination="aMl-Vg-crd" id="XQe-4E-HhC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-44" y="46.326836581709152"/>
+            <point key="canvasLocation" x="-98" y="46"/>
         </scene>
     </scenes>
 </document>
