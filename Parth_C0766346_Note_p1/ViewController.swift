@@ -11,8 +11,8 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
-
-    
+    @IBOutlet weak var fLable: UILabel!
+    @IBOutlet weak var nav: UINavigationItem!
     @IBOutlet weak var folder_tableview: UITableView!
     var folderNameList : [String]?
     @IBOutlet weak var Edit_btn: UINavigationItem!
@@ -20,6 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         folderNameList = []
         folder_tableview.isEditing = false
+        
         // Do any additional setup after loading the view.
         
         
@@ -36,7 +37,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             nameOfFolder.placeholder = "Name"
         }
         
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+        let cancel = UIAlertAction(title: "Cancel", style: .destructive) { (action) in
         }
         
         let addItem = UIAlertAction(title: "Add Item", style: .default) { (action) in
@@ -83,7 +84,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell(style: .default, reuseIdentifier: "")
-        
+        cell.accessoryType = .disclosureIndicator
         cell.imageView?.image = UIImage(named: "folder-icon.png")
         cell.textLabel?.text = folderNameList![indexPath.row]
         
@@ -117,18 +118,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .none
     }
-    /*
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        
-        
-         if editingStyle == .delete {
-        
-            folderNameList?.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        
-        }
-    }*/
+    
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
@@ -141,6 +131,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         return UISwipeActionsConfiguration(actions: [del])
     }
+  
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
 
+        nav.title  = "Folders"
+        fLable.isHidden = true
+        }
+
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+
+        nav.title = ""
+        fLable.isHidden = false
+        
+        
+    }
+
+    
+    
 }
+
+
 
