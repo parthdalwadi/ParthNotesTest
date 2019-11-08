@@ -49,6 +49,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         }
         
+        makeFolderAlert.view.tintColor = .black
         makeFolderAlert.addAction(cancel)
         makeFolderAlert.addAction(addItem)
         self.present(makeFolderAlert, animated: true, completion: nil)
