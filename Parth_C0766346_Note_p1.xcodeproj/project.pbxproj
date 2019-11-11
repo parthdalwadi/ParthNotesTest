@@ -14,6 +14,8 @@
 		9B3EEBB82374A49F00C31AFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B3EEBB72374A49F00C31AFF /* Assets.xcassets */; };
 		9B3EEBBB2374A49F00C31AFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B3EEBB92374A49F00C31AFF /* LaunchScreen.storyboard */; };
 		9B3EEBC72374AADA00C31AFF /* folder-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B3EEBC62374AADA00C31AFF /* folder-icon.png */; };
+		9B969F082379F10700C33305 /* folder_structure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B969F072379F10700C33305 /* folder_structure.swift */; };
+		9B969F0A2379F91900C33305 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B969F092379F91900C33305 /* Notes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		9B3EEBBA2374A49F00C31AFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B3EEBBC2374A49F00C31AFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B3EEBC62374AADA00C31AFF /* folder-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "folder-icon.png"; sourceTree = "<group>"; };
+		9B969F072379F10700C33305 /* folder_structure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = folder_structure.swift; sourceTree = "<group>"; };
+		9B969F092379F91900C33305 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				9B3EEBB72374A49F00C31AFF /* Assets.xcassets */,
 				9B3EEBB92374A49F00C31AFF /* LaunchScreen.storyboard */,
 				9B3EEBBC2374A49F00C31AFF /* Info.plist */,
+				9B969F072379F10700C33305 /* folder_structure.swift */,
+				9B969F092379F91900C33305 /* Notes.swift */,
 			);
 			path = Parth_C0766346_Note_p1;
 			sourceTree = "<group>";
@@ -151,6 +157,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B3EEBB32374A49F00C31AFF /* ViewController.swift in Sources */,
+				9B969F0A2379F91900C33305 /* Notes.swift in Sources */,
+				9B969F082379F10700C33305 /* folder_structure.swift in Sources */,
 				9B3EEBAF2374A49F00C31AFF /* AppDelegate.swift in Sources */,
 				9B3EEBB12374A49F00C31AFF /* SceneDelegate.swift in Sources */,
 			);

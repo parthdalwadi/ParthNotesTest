@@ -14,11 +14,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
    
     @IBOutlet weak var nav: UINavigationItem!
     @IBOutlet weak var folder_tableview: UITableView!
-    var folderNameList : [String]?
+    //var folderNameList : [String]?
     @IBOutlet weak var Edit_btn: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-        folderNameList = []
+        //folderNameList = []
         folder_tableview.isEditing = false
     self.navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -47,7 +47,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let addItem = UIAlertAction(title: "Add Item", style: .default) { (action) in
             
             let fName = makeFolderAlert.textFields![0].text
-            self.folderNameList?.append(fName!)
+            //self.folderNameList?.append(fName!)
+            let f = Folder_Data(name: fName ?? "", notes: [])
+            Folder_Data.foldersList.append(f)
             self.folder_tableview.reloadData()
             
             
@@ -85,19 +87,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return folderNameList?.count ?? 0
+        //return folderNameList?.count ?? 0
+        return Folder_Data.foldersList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "")
+        //let cell = UITableViewCell(style: .value1, reuseIdentifier: "fName")
+        if let cell = folder_tableview.dequeueReusableCell(withIdentifier: "fName"){
         cell.accessoryType = .disclosureIndicator
         cell.imageView?.image = UIImage(named: "folder-icon.png")
         cell.backgroundColor = .lightGray
-        cell.textLabel?.text = folderNameList![indexPath.row]
+        cell.textLabel?.text = Folder_Data.foldersList[indexPath.row].name
+            cell.detailTextLabel?.text = "\(Folder_Data.foldersList[indexPath.row].notes.count)"
         
-        return cell
+        return cell}
         
+        return UITableViewCell()
     }
     
     // editing function
@@ -108,9 +114,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
-        let temp = folderNameList![sourceIndexPath.row]
-        folderNameList![sourceIndexPath.row] = folderNameList![destinationIndexPath.row]
-        folderNameList![destinationIndexPath.row] = temp
+        let temp = Folder_Data.foldersList[sourceIndexPath.row].name
+        Folder_Data.foldersList[sourceIndexPath.row].name = Folder_Data.foldersList[destinationIndexPath.row].name
+        Folder_Data.foldersList[destinationIndexPath.row].name = temp
         folder_tableview.reloadData()
         
     }
@@ -132,7 +138,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let del = UIContextualAction(style: .destructive, title: "Delete") { (act, V, _) in
             
-            self.folderNameList?.remove(at: indexPath.row)
+            Folder_Data.foldersList.remove(at: indexPath.row)
             self.folder_tableview.reloadData()
             
             
