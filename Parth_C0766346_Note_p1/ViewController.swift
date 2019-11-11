@@ -20,7 +20,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         folderNameList = []
         folder_tableview.isEditing = false
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+    self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        self.view.backgroundColor = .lightGray
+        folder_tableview.backgroundColor = .lightGray
+        
         // Do any additional setup after loading the view.
         
         
@@ -49,7 +53,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         }
         
-        makeFolderAlert.view.tintColor = .black
+        cancel.setValue(UIColor.brown, forKey: "titleTextColor")
+        addItem.setValue(UIColor.black, forKey: "titleTextColor")
+        //makeFolderAlert.view.tintColor = .black
         makeFolderAlert.addAction(cancel)
         makeFolderAlert.addAction(addItem)
         self.present(makeFolderAlert, animated: true, completion: nil)
@@ -87,6 +93,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = UITableViewCell(style: .default, reuseIdentifier: "")
         cell.accessoryType = .disclosureIndicator
         cell.imageView?.image = UIImage(named: "folder-icon.png")
+        cell.backgroundColor = .lightGray
         cell.textLabel?.text = folderNameList![indexPath.row]
         
         return cell
