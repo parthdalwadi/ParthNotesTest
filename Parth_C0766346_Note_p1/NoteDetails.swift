@@ -12,19 +12,20 @@ class NoteDetails: UIViewController {
 
     var noteText: String?
     @IBOutlet weak var noteTextArea: UITextView!
-    
+    var isNewNote: Bool?
     var d_Notes: Notes?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        noteText = noteTextArea.text
+        noteTextArea.text = noteText
 
         // Do any additional setup after loading the view.
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         
-        d_Notes?.saveMyNotes(noteTextArea.text)
+        d_Notes?.saveMyNotes(noteTextArea.text, isNewNote!)
     }
     
 

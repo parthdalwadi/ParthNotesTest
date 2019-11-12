@@ -12,19 +12,37 @@ class Notes: UITableViewController {
 
     var d_folderList: ViewController?
     
+    var toDeleteIndex = [Int]()
+    var currNoteIndexPath: IndexPath?
     @IBOutlet weak var deleteO: UIBarButtonItem!
     @IBOutlet weak var moveO: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        deleteO.isEnabled = false
+        moveO.isEnabled = false
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        tableView.allowsMultipleSelection = true
     }
-
+    
+    @IBAction func deleteNote(_ sender: UIBarButtonItem) {
+        
+        toDeleteIndex.sort(by: >)
+        for i in toDeleteIndex{
+            
+            Folder_Data.foldersList[(d_folderList?.currFolderIndex)!].notes.remove(at: i )
+            tableView.reloadData()
+        }
+        
+    }
+    
+    @IBAction func moveNote(_ sender: UIBarButtonItem) {
+        
+    }
     // MARK: - Table view data source
 /*
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -42,11 +60,30 @@ class Notes: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "noteTitle", for: indexPath)
         cell.textLabel?.text = Folder_Data.foldersList[(d_folderList?.currFolderIndex)!].notes[indexPath.row]
-        
         // Configure the cell...
-
+        cell.accessoryType = .detailButton
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        toDeleteIndex.append(indexPath.row)
+        print(toDeleteIndex)
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+        tableView.cellForRow(at: indexPath)?.accessoryType = .detailButton
+        for i in toDeleteIndex.indices{
+            if toDeleteIndex[i] == indexPath.row {toDeleteIndex.remove(at: i)
+                break
+            }
+        }
+        
+        print(toDeleteIndex)
+    }
+    
     
     @IBAction func togleEnable(_ sender: Any) {
         
@@ -64,9 +101,19 @@ class Notes: UITableViewController {
             
         }
     }
-    func saveMyNotes(_ note: String){
-    Folder_Data.foldersList[d_folderList!.currFolderIndex].notes.append(note)
-    tableView.reloadData()
+    func saveMyNotes(_ note: String, _ isNew: Bool){
+    
+        
+    if isNew{
+        Folder_Data.foldersList[d_folderList!.currFolderIndex].notes.append(note)
+        tableView.reloadData()
+    }
+    else{
+        
+        Folder_Data.foldersList[d_folderList!.currFolderIndex].notes[currNoteIndexPath!.row] = note
+        tableView.reloadRows(at: [currNoteIndexPath!], with: .none)
+    
+        }
     }
 
     /*
@@ -114,6 +161,19 @@ class Notes: UITableViewController {
         
         if let noteDetails = segue.destination as? NoteDetails{
             noteDetails.d_Notes = self
+            
+            if let noteCell = sender as? UITableViewCell{
+                noteDetails.isNewNote = false
+                noteDetails.noteText = noteCell.textLabel?.text
+                
+                currNoteIndexPath = tableView.indexPath(for: noteCell)!
+                
+            }
+            
+            if let _ = sender as? UIBarButtonItem{
+                noteDetails.isNewNote = true
+            }
+            
         }
             
         

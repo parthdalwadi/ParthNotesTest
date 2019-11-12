@@ -132,7 +132,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="hQB-Z5-OkD" kind="show" trigger="accessoryAction" id="q5M-Gi-G5Z"/>
+                                    <segue destination="hQB-Z5-OkD" kind="show" trigger="accessoryAction" id="fEj-QK-Gvz"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -142,10 +142,22 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Item" image="trash" catalog="system" id="Azp-Ha-TzU"/>
-                        <barButtonItem title="Item" image="tray.and.arrow.down" catalog="system" id="5Nx-I7-b84"/>
+                        <barButtonItem title="Item" image="trash" catalog="system" id="Azp-Ha-TzU">
+                            <connections>
+                                <action selector="deleteNote:" destination="63u-da-TYi" id="StT-ge-FDP"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Item" image="tray.and.arrow.down" catalog="system" id="5Nx-I7-b84">
+                            <connections>
+                                <action selector="moveNote:" destination="63u-da-TYi" id="Q87-1V-TG0"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="vmA-cO-as5"/>
-                        <barButtonItem image="pencil.and.ellipsis.rectangle" catalog="system" id="PQx-Fd-qIn"/>
+                        <barButtonItem image="pencil.and.ellipsis.rectangle" catalog="system" id="PQx-Fd-qIn">
+                            <connections>
+                                <segue destination="hQB-Z5-OkD" kind="show" id="hGi-R3-SHI"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Notes" largeTitleDisplayMode="always" id="nr1-OU-El2">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="ellipsis" catalog="system" id="n1g-0d-uwL">
@@ -201,4 +213,7 @@
         <image name="trash" catalog="system" width="60" height="64"/>
         <image name="tray.and.arrow.down" catalog="system" width="64" height="54"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="fEj-QK-Gvz"/>
+    </inferredMetricsTieBreakers>
 </document>
