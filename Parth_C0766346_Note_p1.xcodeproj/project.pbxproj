@@ -16,6 +16,7 @@
 		9B3EEBC72374AADA00C31AFF /* folder-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B3EEBC62374AADA00C31AFF /* folder-icon.png */; };
 		9B969F082379F10700C33305 /* folder_structure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B969F072379F10700C33305 /* folder_structure.swift */; };
 		9B969F0A2379F91900C33305 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B969F092379F91900C33305 /* Notes.swift */; };
+		F2EEE319237A22E600A2FF95 /* NoteDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EEE318237A22E600A2FF95 /* NoteDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		9B3EEBC62374AADA00C31AFF /* folder-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "folder-icon.png"; sourceTree = "<group>"; };
 		9B969F072379F10700C33305 /* folder_structure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = folder_structure.swift; sourceTree = "<group>"; };
 		9B969F092379F91900C33305 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
+		F2EEE318237A22E600A2FF95 /* NoteDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,13 +67,14 @@
 				9B3EEBC52374AA9B00C31AFF /* Images */,
 				9B3EEBAE2374A49F00C31AFF /* AppDelegate.swift */,
 				9B3EEBB02374A49F00C31AFF /* SceneDelegate.swift */,
-				9B3EEBB22374A49F00C31AFF /* ViewController.swift */,
 				9B3EEBB42374A49F00C31AFF /* Main.storyboard */,
 				9B3EEBB72374A49F00C31AFF /* Assets.xcassets */,
 				9B3EEBB92374A49F00C31AFF /* LaunchScreen.storyboard */,
 				9B3EEBBC2374A49F00C31AFF /* Info.plist */,
 				9B969F072379F10700C33305 /* folder_structure.swift */,
+				9B3EEBB22374A49F00C31AFF /* ViewController.swift */,
 				9B969F092379F91900C33305 /* Notes.swift */,
+				F2EEE318237A22E600A2FF95 /* NoteDetails.swift */,
 			);
 			path = Parth_C0766346_Note_p1;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 				9B969F0A2379F91900C33305 /* Notes.swift in Sources */,
 				9B969F082379F10700C33305 /* folder_structure.swift in Sources */,
 				9B3EEBAF2374A49F00C31AFF /* AppDelegate.swift in Sources */,
+				F2EEE319237A22E600A2FF95 /* NoteDetails.swift in Sources */,
 				9B3EEBB12374A49F00C31AFF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

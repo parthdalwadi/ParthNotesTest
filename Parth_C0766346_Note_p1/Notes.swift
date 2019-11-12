@@ -10,6 +10,10 @@ import UIKit
 
 class Notes: UITableViewController {
 
+    var d_folderList: ViewController?
+    
+    @IBOutlet weak var deleteO: UIBarButtonItem!
+    @IBOutlet weak var moveO: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,26 +26,48 @@ class Notes: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+/*
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
-    }
+    }*/
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return Folder_Data.foldersList[(d_folderList?.currFolderIndex)!].notes.count
     }
 
-    /*
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "noteTitle", for: indexPath)
+        cell.textLabel?.text = Folder_Data.foldersList[(d_folderList?.currFolderIndex)!].notes[indexPath.row]
+        
         // Configure the cell...
 
         return cell
     }
-    */
+    
+    @IBAction func togleEnable(_ sender: Any) {
+        
+        
+        if deleteO.isEnabled == true{
+            
+            deleteO.isEnabled = false
+            moveO.isEnabled = false
+            
+        }
+        else{
+            
+           deleteO.isEnabled = true
+            moveO.isEnabled = true
+            
+        }
+    }
+    func saveMyNotes(_ note: String){
+    Folder_Data.foldersList[d_folderList!.currFolderIndex].notes.append(note)
+    tableView.reloadData()
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -78,14 +104,28 @@ class Notes: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        if let noteDetails = segue.destination as? NoteDetails{
+            noteDetails.d_Notes = self
+        }
+            
+        
+        
     }
-    */
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        d_folderList?.updateCount()
+    }
+    
+    
+    
 
 }

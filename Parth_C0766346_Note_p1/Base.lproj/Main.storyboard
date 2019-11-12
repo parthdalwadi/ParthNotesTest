@@ -109,19 +109,31 @@
         <!--Notes-->
         <scene sceneID="m1b-Lr-DOK">
             <objects>
-                <tableViewController id="63u-da-TYi" sceneMemberID="viewController">
+                <tableViewController id="63u-da-TYi" customClass="Notes" customModule="Parth_C0766346_Note_p1" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Won-jm-JeQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="7lb-nX-J2e">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="noteTitle" textLabel="3wr-Fx-AK5" style="IBUITableViewCellStyleDefault" id="7lb-nX-J2e">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7lb-nX-J2e" id="73e-cs-LIi">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3wr-Fx-AK5">
+                                            <rect key="frame" x="16" y="0.0" width="311" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="hQB-Z5-OkD" kind="show" trigger="accessoryAction" id="q5M-Gi-G5Z"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -129,14 +141,64 @@
                             <outlet property="delegate" destination="63u-da-TYi" id="Wen-jx-gPV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Notes" largeTitleDisplayMode="always" id="nr1-OU-El2"/>
+                    <toolbarItems>
+                        <barButtonItem title="Item" image="trash" catalog="system" id="Azp-Ha-TzU"/>
+                        <barButtonItem title="Item" image="tray.and.arrow.down" catalog="system" id="5Nx-I7-b84"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="vmA-cO-as5"/>
+                        <barButtonItem image="pencil.and.ellipsis.rectangle" catalog="system" id="PQx-Fd-qIn"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Notes" largeTitleDisplayMode="always" id="nr1-OU-El2">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="ellipsis" catalog="system" id="n1g-0d-uwL">
+                            <connections>
+                                <action selector="togleEnable:" destination="63u-da-TYi" id="hLK-gB-YqT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="deleteO" destination="Azp-Ha-TzU" id="mQu-xD-26t"/>
+                        <outlet property="moveO" destination="5Nx-I7-b84" id="s74-uj-tFI"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AIp-KR-Vah" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="590" y="37"/>
         </scene>
+        <!--Note Details-->
+        <scene sceneID="wS3-1M-tvQ">
+            <objects>
+                <viewController id="hQB-Z5-OkD" customClass="NoteDetails" customModule="Parth_C0766346_Note_p1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LmM-O3-JGI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TKh-jx-UjA">
+                                <rect key="frame" x="16" y="57" width="343" height="561"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="XwE-s4-197"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="WdL-ax-7XN"/>
+                    <connections>
+                        <outlet property="noteTextArea" destination="TKh-jx-UjA" id="L4F-lX-1O1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Luw-gE-Ikf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1335.2" y="38.23088455772114"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="ellipsis" catalog="system" width="64" height="18"/>
         <image name="folder.badge.plus" catalog="system" width="64" height="42"/>
+        <image name="pencil.and.ellipsis.rectangle" catalog="system" width="64" height="40"/>
+        <image name="trash" catalog="system" width="60" height="64"/>
+        <image name="tray.and.arrow.down" catalog="system" width="64" height="54"/>
     </resources>
 </document>

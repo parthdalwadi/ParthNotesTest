@@ -10,8 +10,9 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var currFolderIndex = -1
+    var currFolderIndexPath: IndexPath?
     
-   
     @IBOutlet weak var nav: UINavigationItem!
     @IBOutlet weak var folder_tableview: UITableView!
     //var folderNameList : [String]?
@@ -34,8 +35,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     @IBAction func Create_New_Folder(_ sender: UIBarButtonItem) {
+       
+        
         
         let makeFolderAlert = UIAlertController(title: "New Folder", message: "Enter a Name for this Folder", preferredStyle: .alert)
+        
         
         makeFolderAlert.addTextField { (nameOfFolder) in
             nameOfFolder.placeholder = "Name"
@@ -47,20 +51,37 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let addItem = UIAlertAction(title: "Add Item", style: .default) { (action) in
             
             let fName = makeFolderAlert.textFields![0].text
-            //self.folderNameList?.append(fName!)
-            let f = Folder_Data(name: fName ?? "", notes: [])
-            Folder_Data.foldersList.append(f)
-            self.folder_tableview.reloadData()
+            var nameTaken: Bool = false
+            for folder in Folder_Data.foldersList{
+                if folder.name == fName { nameTaken = true; break }
+            }
+            if nameTaken {
+                let nameTakenAlert = UIAlertController(title: "Name Taken", message: "Please choose different Name", preferredStyle: .alert)
+                       
+                let ok = UIAlertAction(title: "OK", style: .cancel, handler: {(action) in
+                    
+                })
+                nameTakenAlert.addAction(ok)
+                self.present(nameTakenAlert, animated: true, completion: nil)
+                return
+                
+
+            }
+            else{
+                let f = Folder_Data(name: fName ?? "", notes: [])
+                Folder_Data.foldersList.append(f)
+                self.folder_tableview.reloadData()
+            }
             
             
         }
         
-        cancel.setValue(UIColor.brown, forKey: "titleTextColor")
-        addItem.setValue(UIColor.black, forKey: "titleTextColor")
-        //makeFolderAlert.view.tintColor = .black
-        makeFolderAlert.addAction(cancel)
-        makeFolderAlert.addAction(addItem)
-        self.present(makeFolderAlert, animated: true, completion: nil)
+         cancel.setValue(UIColor.brown, forKey: "titleTextColor")
+         addItem.setValue(UIColor.black, forKey: "titleTextColor")
+        
+         makeFolderAlert.addAction(cancel)
+         makeFolderAlert.addAction(addItem)
+         self.present(makeFolderAlert, animated: true, completion: nil)
         
         
     
@@ -145,8 +166,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         return UISwipeActionsConfiguration(actions: [del])
     }
-  
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let notes = segue.destination as? Notes{
+            notes.d_folderList = self
+            
+            if let folderCell = sender as? UITableViewCell{
+                
+                let fIndexPath = folder_tableview.indexPath(for: folderCell)
+                currFolderIndex = fIndexPath!.row
+                currFolderIndexPath = fIndexPath
+            }
+        }
+    }
+    
+    
+    func updateCount(){
+        
+        folder_tableview.reloadRows(at: [currFolderIndexPath!], with: .none)
+        
+    }
     
 }
 
