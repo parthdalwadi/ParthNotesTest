@@ -16,6 +16,7 @@
 		9B3EEBC72374AADA00C31AFF /* folder-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B3EEBC62374AADA00C31AFF /* folder-icon.png */; };
 		9B969F082379F10700C33305 /* folder_structure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B969F072379F10700C33305 /* folder_structure.swift */; };
 		9B969F0A2379F91900C33305 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B969F092379F91900C33305 /* Notes.swift */; };
+		F2A9E854237B4A4100FF89B3 /* moveNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A9E853237B4A4100FF89B3 /* moveNotes.swift */; };
 		F2EEE319237A22E600A2FF95 /* NoteDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EEE318237A22E600A2FF95 /* NoteDetails.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		9B3EEBC62374AADA00C31AFF /* folder-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "folder-icon.png"; sourceTree = "<group>"; };
 		9B969F072379F10700C33305 /* folder_structure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = folder_structure.swift; sourceTree = "<group>"; };
 		9B969F092379F91900C33305 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
+		F2A9E853237B4A4100FF89B3 /* moveNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moveNotes.swift; sourceTree = "<group>"; };
 		F2EEE318237A22E600A2FF95 /* NoteDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +77,7 @@
 				9B3EEBB22374A49F00C31AFF /* ViewController.swift */,
 				9B969F092379F91900C33305 /* Notes.swift */,
 				F2EEE318237A22E600A2FF95 /* NoteDetails.swift */,
+				F2A9E853237B4A4100FF89B3 /* moveNotes.swift */,
 			);
 			path = Parth_C0766346_Note_p1;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B3EEBB32374A49F00C31AFF /* ViewController.swift in Sources */,
+				F2A9E854237B4A4100FF89B3 /* moveNotes.swift in Sources */,
 				9B969F0A2379F91900C33305 /* Notes.swift in Sources */,
 				9B969F082379F10700C33305 /* folder_structure.swift in Sources */,
 				9B3EEBAF2374A49F00C31AFF /* AppDelegate.swift in Sources */,

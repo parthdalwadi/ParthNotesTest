@@ -12,7 +12,7 @@ class Notes: UITableViewController {
 
     var d_folderList: ViewController?
     
-    var toDeleteIndex = [Int]()
+    var selectedIndexes = [Int]()
     var currNoteIndexPath: IndexPath?
     @IBOutlet weak var deleteO: UIBarButtonItem!
     @IBOutlet weak var moveO: UIBarButtonItem!
@@ -31,12 +31,31 @@ class Notes: UITableViewController {
     
     @IBAction func deleteNote(_ sender: UIBarButtonItem) {
         
-        toDeleteIndex.sort(by: >)
-        for i in toDeleteIndex{
+        deleteSelectedItems()
+        
+    }
+    
+    func deleteSelectedItems(){
+        selectedIndexes.sort(by: >)
+        for i in selectedIndexes{
             
             Folder_Data.foldersList[(d_folderList?.currFolderIndex)!].notes.remove(at: i )
             tableView.reloadData()
         }
+    }
+    
+    
+    
+    func moveselectedItems(to index: Int){
+        
+        for i in selectedIndexes{
+            
+          let item = Folder_Data.foldersList[(d_folderList?.currFolderIndex)!].notes[i]
+            
+            Folder_Data.foldersList[index].notes.append(item)
+            
+        }
+        
         
     }
     
@@ -68,20 +87,21 @@ class Notes: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        toDeleteIndex.append(indexPath.row)
-        print(toDeleteIndex)
+        selectedIndexes.append(indexPath.row)
+        
+        
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
         tableView.cellForRow(at: indexPath)?.accessoryType = .detailButton
-        for i in toDeleteIndex.indices{
-            if toDeleteIndex[i] == indexPath.row {toDeleteIndex.remove(at: i)
+        for i in selectedIndexes.indices{
+            if selectedIndexes[i] == indexPath.row {selectedIndexes.remove(at: i)
                 break
             }
         }
         
-        print(toDeleteIndex)
+        
     }
     
     
@@ -175,7 +195,12 @@ class Notes: UITableViewController {
             }
             
         }
+        
+        
+        if let move = segue.destination as? moveNotes{
+            move.d_Notesmove = self
             
+        }
         
         
     }
