@@ -44,6 +44,13 @@ class moveNotes: UIViewController , UITableViewDelegate, UITableViewDataSource{
         
     }
     
+    
+    @IBAction func cancel_btn_press(_ sender: UIButton) {
+        
+    self.presentingViewController?.dismiss(animated: true, completion: nil)
+        
+    }
+    
     func moveAlert(_ indexPath: IndexPath){
         
         let f_name = Folder_Data.foldersList[indexPath.row].name

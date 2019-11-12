@@ -53,10 +53,8 @@ class Notes: UITableViewController {
           let item = Folder_Data.foldersList[(d_folderList?.currFolderIndex)!].notes[i]
             
             Folder_Data.foldersList[index].notes.append(item)
-            
         }
-        
-        
+        deleteSelectedItems()
     }
     
     @IBAction func moveNote(_ sender: UIBarButtonItem) {
