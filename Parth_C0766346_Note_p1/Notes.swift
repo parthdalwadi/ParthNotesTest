@@ -31,7 +31,19 @@ class Notes: UITableViewController {
     
     @IBAction func deleteNote(_ sender: UIBarButtonItem) {
         
-        deleteSelectedItems()
+        let delete_alert_cont = UIAlertController(title: "Delete", message: "Are you sure ?", preferredStyle: .alert)
+        
+        let can = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let del = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            self.deleteSelectedItems()
+        }
+        
+        delete_alert_cont.addAction(can)
+        delete_alert_cont.addAction(del)
+        self.present(delete_alert_cont, animated: true, completion: nil)
+
+
+        
         
     }
     
