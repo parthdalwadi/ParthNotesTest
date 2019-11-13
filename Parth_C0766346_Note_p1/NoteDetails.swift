@@ -18,7 +18,9 @@ class NoteDetails: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        noteTextArea.backgroundColor = .darkGray
         noteTextArea.text = noteText
+        
 
         // Do any additional setup after loading the view.
     }

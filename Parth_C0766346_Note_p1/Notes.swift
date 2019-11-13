@@ -27,6 +27,8 @@ class Notes: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationController?.navigationBar.prefersLargeTitles = true
         tableView.allowsMultipleSelection = true
+        tableView.backgroundColor = .darkGray
+        
     }
     
     @IBAction func deleteNote(_ sender: UIBarButtonItem) {
@@ -37,7 +39,7 @@ class Notes: UITableViewController {
         let del = UIAlertAction(title: "Delete", style: .destructive) { (action) in
             self.deleteSelectedItems()
         }
-        
+        can.setValue(UIColor.orange, forKey: "titleTextColor")
         delete_alert_cont.addAction(can)
         delete_alert_cont.addAction(del)
         self.present(delete_alert_cont, animated: true, completion: nil)
@@ -53,6 +55,7 @@ class Notes: UITableViewController {
             
             Folder_Data.foldersList[(d_folderList?.currFolderIndex)!].notes.remove(at: i )
             tableView.reloadData()
+            d_folderList?.folder_tableview.reloadData()
         }
     }
     
@@ -91,12 +94,15 @@ class Notes: UITableViewController {
         cell.textLabel?.text = Folder_Data.foldersList[(d_folderList?.currFolderIndex)!].notes[indexPath.row]
         // Configure the cell...
         cell.accessoryType = .detailButton
+        cell.backgroundColor = .darkGray
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        
+        
         selectedIndexes.append(indexPath.row)
         
         

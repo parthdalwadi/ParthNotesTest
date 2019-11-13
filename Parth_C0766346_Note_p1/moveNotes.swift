@@ -32,7 +32,7 @@ class moveNotes: UIViewController , UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
          let cell = UITableViewCell(style: .default, reuseIdentifier: "")
-            
+        cell.backgroundColor = .darkGray
             cell.textLabel?.text = Folder_Data.foldersList[indexPath.row].name
                 
             
@@ -67,6 +67,8 @@ class moveNotes: UIViewController , UITableViewDelegate, UITableViewDataSource{
         
         move_Alert_controller.addAction(no)
         move_Alert_controller.addAction(move)
+        no.setValue(UIColor.orange, forKey: "titleTextColor")
+        move.setValue(UIColor.black, forKey: "titleTextColor")
 
         self.present(move_Alert_controller, animated: true, completion: nil)
         

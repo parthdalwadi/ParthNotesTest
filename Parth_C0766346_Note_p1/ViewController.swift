@@ -23,8 +23,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         folder_tableview.isEditing = false
     self.navigationController?.navigationBar.prefersLargeTitles = true
         
-        self.view.backgroundColor = .lightGray
-        folder_tableview.backgroundColor = .lightGray
+        self.view.backgroundColor = .darkGray
+        folder_tableview.backgroundColor = .darkGray
         
         // Do any additional setup after loading the view.
         
@@ -62,6 +62,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                 })
                 nameTakenAlert.addAction(ok)
+                ok.setValue(UIColor.orange, forKey: "titleTextColor")
                 self.present(nameTakenAlert, animated: true, completion: nil)
                 return
                 
@@ -76,7 +77,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         }
         
-         cancel.setValue(UIColor.brown, forKey: "titleTextColor")
+         cancel.setValue(UIColor.orange, forKey: "titleTextColor")
          addItem.setValue(UIColor.black, forKey: "titleTextColor")
         
          makeFolderAlert.addAction(cancel)
@@ -118,9 +119,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if let cell = folder_tableview.dequeueReusableCell(withIdentifier: "fName"){
         cell.accessoryType = .disclosureIndicator
         cell.imageView?.image = UIImage(named: "folder-icon.png")
-        cell.backgroundColor = .lightGray
+        cell.backgroundColor = .darkGray
         cell.textLabel?.text = Folder_Data.foldersList[indexPath.row].name
-            cell.detailTextLabel?.text = "\(Folder_Data.foldersList[indexPath.row].notes.count)"
+        cell.detailTextLabel?.text = "\(Folder_Data.foldersList[indexPath.row].notes.count)"
+            cell.detailTextLabel?.textColor = .white
         
         return cell}
         
